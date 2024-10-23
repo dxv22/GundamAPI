@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using MediatR;
 using GundamAPI.Queries.GetGundamById;
 using GundamAPI.Queries.GetAllGundams;
+using GundamAPI.Commands.PostGundamCommand;
 
 namespace GundamAPI.Controllers
 {
@@ -11,7 +12,6 @@ namespace GundamAPI.Controllers
     public class GundamController(IMediator mediator) : ControllerBase
     {
         private readonly IMediator _mediator = mediator;
-        private readonly GundamContext _gundamContext;
 
         // GET : api/Gundams
         [HttpGet]
@@ -29,6 +29,15 @@ namespace GundamAPI.Controllers
             var query = new GetGundamByIdQuery(id);
             var result = await _mediator.Send(query);
             return Ok(result);
+        }
+
+        // POST : api/Gundams
+        [HttpPost]
+        public async Task<ActionResult<Gundam>> PostGundam(GundamDto gundam)
+        {
+            var command = new PostGundamCommand(gundam);
+            var result = await _mediator.Send(command);
+            return CreatedAtAction(nameof(GetGundamById), new { id = result.Id }, result);
         }
 
         //public GundamController(GundamContext gundamContext)

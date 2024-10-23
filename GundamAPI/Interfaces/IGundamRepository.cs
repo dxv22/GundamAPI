@@ -6,8 +6,8 @@ namespace GundamAPI.Interfaces
     {
         Task<IEnumerable<Gundam>> GetAllGundamsAsync();
         Task<Gundam?> GetGundamByIdAsync(int id);
-        Task<Gundam> AddGundamAsync(GundamDto gundam);
-        Task<bool> UpdateGundamAsync(GundamDto gundam);
+        Task<Gundam> AddGundamAsync(Gundam gundam);
+        Task<bool> UpdateGundamAsync(Gundam gundam);
         Task<bool> DeleteGundamAsync(int id);
     }
 }

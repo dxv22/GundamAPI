@@ -19,12 +19,15 @@ namespace GundamAPI.Repositories
             return await _context.Gundams.FirstOrDefaultAsync(g => g.Id == id);
         }
 
-        public async Task<Gundam> AddGundamAsync(GundamDto gundam)
+        public async Task<Gundam> AddGundamAsync(Gundam gundam)
         {
-            throw new NotImplementedException();
+            var entry = await _context.Gundams.AddAsync(gundam);
+            await _context.SaveChangesAsync();
+
+            return entry.Entity;
         }
 
-        public async Task<bool> UpdateGundamAsync(GundamDto gundam)
+        public async Task<bool> UpdateGundamAsync(Gundam gundam)
         {
             throw new NotImplementedException();
         }

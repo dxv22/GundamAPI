@@ -8,7 +8,7 @@ namespace GundamAPI.Mapper
         {
             return new GundamDto
             {
-                Id = gundam.Id,
+                //Id = gundam.Id,
                 Title = gundam.Title,
                 Pilot = gundam.Pilot,
                 ReleaseDate = gundam.ReleaseDate,
@@ -19,7 +19,7 @@ namespace GundamAPI.Mapper
         {
             return new Gundam
             {
-                Id = dto.Id,
+                //Id = dto.Id,
                 Title = dto.Title,
                 Pilot = dto.Pilot,
                 ReleaseDate = dto.ReleaseDate,
