@@ -1,0 +1,6 @@
+@GundamAPI_HostAddress = http://localhost:7107
+
+GET {{GundamAPI_HostAddress}}/WeatherForecast/
+Accept: application/json
+
+###
