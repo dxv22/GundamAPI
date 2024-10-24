@@ -29,7 +29,10 @@ namespace GundamAPI.Repositories
 
         public async Task<bool> UpdateGundamAsync(Gundam gundam)
         {
-            throw new NotImplementedException();
+            _context.Gundams.Update(gundam);
+            var changes = await _context.SaveChangesAsync();
+
+            return changes > 0;
         }
 
         public async Task<bool> DeleteGundamAsync(int id)
