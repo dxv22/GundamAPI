@@ -5,6 +5,7 @@ using GundamAPI.Queries.GetGundamById;
 using GundamAPI.Queries.GetAllGundams;
 using GundamAPI.Commands.PostGundamCommand;
 using GundamAPI.Commands.UpdateGundamCommand;
+using GundamAPI.Commands.DeleteGundamCommand;
 
 namespace GundamAPI.Controllers
 {
@@ -66,6 +67,14 @@ namespace GundamAPI.Controllers
         public async Task<ActionResult<bool>> UpdateGundam(int id, GundamDto gundam)
         {
             var command = new UpdateGundamCommand(id, gundam);
+            var result = await _mediator.Send(command);
+            return Ok(result);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<bool>> DeleteGundam(int id)
+        {
+            var command = new DeleteGundamCommand(id);
             var result = await _mediator.Send(command);
             return Ok(result);
         }

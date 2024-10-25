@@ -35,9 +35,12 @@ namespace GundamAPI.Repositories
             return changes > 0;
         }
 
-        public async Task<bool> DeleteGundamAsync(int id)
+        public async Task<bool> DeleteGundamAsync(Gundam gundam)
         {
-            throw new NotImplementedException();
+            _context.Gundams.Remove(gundam);
+            var result = await _context.SaveChangesAsync();
+            
+            return result > 0;
         }
     }
 }
